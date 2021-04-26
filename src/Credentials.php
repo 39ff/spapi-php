@@ -27,9 +27,11 @@ class Credentials
      * @return array
      * @throws \Exception
      */
+    //https://github.com/double-break/spapi-php/blob/4333a4ccd008b5120f158563b30b1b3c9344c6df/src/Credentials.php
     public function getCredentials($useMigrationToken = false)
     {
-        $lwaAccessToken = $useMigrationToken === true ? $this->getMigrationToken() : $useMigrationToken === 'grantless' ? $this->getGrantlessAuthToken() : $this->getLWAToken();
+        $lwaAccessToken = $useMigrationToken === true ? $this->getMigrationToken() :
+            ($useMigrationToken === 'grantless' ? $this->getGrantlessAuthToken() : $this->getLWAToken());
         $stsCredentials = $this->getStsTokens();
 
         return [
@@ -37,6 +39,7 @@ class Credentials
             'sts_credentials' => $stsCredentials
         ];
     }
+
 
     private function getLWAToken()
     {
