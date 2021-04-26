@@ -13,7 +13,7 @@ class SimpleTokenStorage implements TokenStorageInterface {
 
   public function getToken($key): ?array
   {
-    $content = file_get_contents($this->filePath);
+    $content = @file_get_contents($this->filePath);
 
     if ($content != '') {
       $json = json_decode($content, true);
@@ -27,7 +27,7 @@ class SimpleTokenStorage implements TokenStorageInterface {
   {
 
     $json = [];
-    $content = file_get_contents($this->filePath);
+    $content = @file_get_contents($this->filePath);
     if ($content != '') {
       $json = json_decode($content, true);
     }
