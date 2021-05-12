@@ -47,7 +47,7 @@ class CatalogItems extends Client {
   */
   public function getCatalogItem($asin, $queryParams = [])
   {
-    return $this->send("/catalog/v0/items/{$asin}", [
+    return $this->send("/catalog/2020-12-01/items/{$asin}", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
